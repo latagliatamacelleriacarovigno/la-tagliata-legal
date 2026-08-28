@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Informativa sulla Privacy — La Tagliata</title>
+<link rel="icon" href="favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #323232;
+    --card: #393635;
+    --card-hover: #413e3c;
+    --ink: #efe9de;
+    --ink-soft: #c9c2b4;
+    --ink-muted: #9c968a;
+    --border: #54504d;
+    --accent: #a9642f;
+    --accent-soft: rgba(169, 100, 47, 0.18);
+    --accent-deep: #8f5025;
+    --warm: #d6432b;
+    --warm-soft: rgba(214, 67, 43, 0.16);
+    --warm-deep: #a3350f;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #fbf9f6;
+      --card: #ffffff;
+      --card-hover: #f2eee7;
+      --ink: #2a2724;
+      --ink-soft: #5c564e;
+      --ink-muted: #8a8377;
+      --border: rgba(42, 39, 36, 0.12);
+      --accent: #8f5025;
+      --accent-soft: rgba(143, 80, 37, 0.1);
+      --accent-deep: #6b3c1c;
+      --warm: #b23a1c;
+      --warm-soft: rgba(178, 58, 28, 0.1);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .display {
+    font-family: "Playfair Display", Georgia, serif;
+    text-wrap: balance;
+  }
+
+  /* ---------- nav ---------- */
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem clamp(1.25rem, 4vw, 3rem);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .brand img {
+    width: 28px;
+    height: 28px;
+    display: block;
+    border-radius: 7px;
+  }
+
+  .brand-name {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(3.5rem, 9vw, 6.5rem) 1.5rem clamp(3rem, 7vw, 5rem);
+    text-align: center;
+    isolation: isolate;
+  }
+
+  .hero::before,
+  .hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.3;
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+
+  .hero::before {
+    width: 34rem;
+    height: 34rem;
+    top: -14rem;
+    left: 50%;
+    transform: translateX(-70%);
+    background: radial-gradient(circle, var(--warm), transparent 70%);
+  }
+
+  .hero::after {
+    width: 30rem;
+    height: 30rem;
+    top: -8rem;
+    left: 50%;
+    transform: translateX(10%);
+    background: radial-gradient(circle, var(--accent), transparent 70%);
+    animation-delay: -11s;
+  }
+
+  @keyframes drift {
+    from { transform: translate(-70%, 0) scale(1); }
+    to { transform: translate(-58%, 3%) scale(1.08); }
+  }
+
+  .hero-logo {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 1.5rem;
+    display: block;
+    border-radius: 20px;
+    filter: drop-shadow(0 12px 28px rgba(143, 80, 37, 0.35));
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--warm), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.08;
+    margin: 0 0 1rem;
+    color: var(--ink);
+  }
+
+  .hero-sub {
+    max-width: 46ch;
+    margin: 0 auto;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 0.4em 0.9em;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--ink-soft);
+  }
+
+  .chip strong { color: var(--ink); font-weight: 700; }
+
+  /* ---------- layout ---------- */
+
+  .layout {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 2rem) 6rem;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { display: none; }
+  }
+
+  .toc {
+    position: sticky;
+    top: 5.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-top: 0.5rem;
+  }
+
+  .toc-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .toc a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    border-left: 2px solid transparent;
+    transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .toc a:hover {
+    color: var(--ink);
+    background: var(--card);
+    border-left-color: var(--accent);
+  }
+
+  .content { min-width: 0; }
+
+  .intro {
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 0 0 2.5rem;
+  }
+
+  section {
+    scroll-margin-top: 5.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 0.85rem;
+  }
+
+  h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 0.85rem;
+    text-wrap: balance;
+  }
+
+  p { margin: 0 0 0.9rem; max-width: 64ch; }
+  p:last-child { margin-bottom: 0; }
+
+  ul { margin: 0 0 0.9rem; padding-left: 1.2rem; max-width: 62ch; }
+  li { margin-bottom: 0.5rem; }
+  li:last-child { margin-bottom: 0; }
+
+  strong { font-weight: 600; }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem clamp(1.25rem, 4vw, 3rem) 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+
+  .footer-brand img { width: 20px; height: 20px; border-radius: 5px; }
+
+  footer .tagline { color: var(--ink-muted); font-size: 0.82rem; }
+  footer .tagline a { margin-left: 0.75rem; }
+  footer .tagline a:first-child { margin-left: 0; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brand" href="#top">
+    <img src="logo.png" alt="" />
+    <span class="brand-name">La Tagliata</span>
+  </a>
+  <span class="nav-tag">Documento legale</span>
+</nav>
+
+<header class="hero" id="top">
+  <img class="hero-logo" src="logo.png" alt="La Tagliata" />
+  <span class="eyebrow">La Tagliata &middot; macelleria e ordini online</span>
+  <h1 class="display">Informativa sulla Privacy</h1>
+  <p class="hero-sub">Come La Tagliata SRLS tratta i dati di chi usa l'app per ordinare e ritirare in negozio.</p>
+  <div class="chips">
+    <span class="chip">Ultimo aggiornamento: <strong>28/08/2026</strong></span>
+    <span class="chip">Ambito: <strong>Android e iOS</strong></span>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Indice">
+    <span class="toc-label">Indice</span>
+    <a href="#s1">1. Titolare del trattamento</a>
+    <a href="#s2">2. Dati raccolti</a>
+    <a href="#s3">3. Finalit&agrave;</a>
+    <a href="#s4">4. Base giuridica</a>
+    <a href="#s5">5. Servizi terzi</a>
+    <a href="#s6">6. Conservazione</a>
+    <a href="#s7">7. Diritti dell'interessato</a>
+    <a href="#s8">8. Sicurezza</a>
+    <a href="#s9">9. Modifiche</a>
+    <a href="#s10">10. Contatti</a>
+  </nav>
+
+  <main class="content">
+    <p class="intro">In breve: l'app La Tagliata permette di ordinare prodotti dalla nostra macelleria e ritirarli in negozio. Questa pagina spiega quali dati trattiamo, perch&eacute; e quali diritti hai.</p>
+
+    <section id="s1">
+      <span class="num">1</span>
+      <h2>Titolare del trattamento</h2>
+      <p>Il titolare del trattamento &egrave; <strong>La Tagliata SRLS</strong>, P.IVA 02611430741, con sede in Via Caduti in Guerra 2, Carovigno (BR). Per qualsiasi richiesta relativa ai tuoi dati puoi scrivere a <strong><a href="mailto:tagliatacarovigno@gmail.com">tagliatacarovigno@gmail.com</a></strong>.</p>
+    </section>
+
+    <section id="s2">
+      <span class="num">2</span>
+      <h2>Dati raccolti</h2>
+      <p>Attraverso l'app raccogliamo:</p>
+      <ul>
+        <li><strong>Dati dell'account</strong> &mdash; indirizzo email e, se accedi con Google o Apple, l'identificativo dell'account e il nome associato. La password del tuo account Google o Apple non viene mai raccolta n&eacute; memorizzata da noi.</li>
+        <li><strong>Numero di telefono</strong> &mdash; verificato tramite codice inviato via SMS, usato per confermare e gestire i tuoi ordini.</li>
+        <li><strong>Dati inseriti nel profilo e negli ordini</strong> &mdash; nome, prodotti richiesti, eventuali note, data e orario di ritiro scelto.</li>
+      </ul>
+      <p>Non trattiamo categorie particolari di dati (art. 9 GDPR: salute, origine etnica, opinioni politiche/religiose, ecc.) n&eacute; dati su condanne penali o reati (art. 10 GDPR). Non facciamo profilazione n&eacute; decisioni automatizzate (art. 22 GDPR).</p>
+    </section>
+
+    <section id="s3">
+      <span class="num">3</span>
+      <h2>Finalit&agrave; del trattamento</h2>
+      <p>Usiamo i tuoi dati solo per:</p>
+      <ul>
+        <li>farti accedere in modo sicuro all'app (autenticazione);</li>
+        <li>gestire i tuoi ordini, dalla creazione al ritiro in negozio;</li>
+        <li>contattarti per questioni relative a un tuo ordine (es. conferma, modifiche, annullamento).</li>
+      </ul>
+      <p>Non usiamo i tuoi dati per pubblicit&agrave;, non facciamo profilazione di marketing e non li vendiamo n&eacute; li cediamo a terzi per fini commerciali.</p>
+    </section>
+
+    <section id="s4">
+      <span class="num">4</span>
+      <h2>Base giuridica</h2>
+      <p>Trattiamo i dati necessari a creare e gestire i tuoi ordini sulla base dell'esecuzione del rapporto contrattuale che si instaura quando effettui un ordine. I dati dell'account (email, numero di telefono) sono trattati sulla base del rapporto d'uso dell'app che accetti creando un account.</p>
+    </section>
+
+    <section id="s5">
+      <span class="num">5</span>
+      <h2>Servizi terzi utilizzati</h2>
+      <ul>
+        <li><strong>Supabase</strong> (hosting del database e autenticazione) &mdash; i dati sono conservati su server situati nell'Unione Europea.</li>
+        <li><strong>Google Sign-In</strong> (Google LLC) &mdash; utilizzato solo come metodo di autenticazione opzionale; si applica anche l'informativa privacy di Google.</li>
+        <li><strong>Sign in with Apple</strong> (Apple Inc.) &mdash; utilizzato solo come metodo di autenticazione opzionale su iOS; si applica anche l'informativa privacy di Apple.</li>
+      </ul>
+      <p>Nessun altro servizio di terze parti (analytics, pubblicit&agrave;, tracciamento) &egrave; integrato nell'app.</p>
+    </section>
+
+    <section id="s6">
+      <span class="num">6</span>
+      <h2>Conservazione dei dati</h2>
+      <p>I dati del tuo account restano finch&eacute; mantieni attivo l'account sull'app. I dati dei tuoi ordini vengono conservati anche successivamente, per il tempo necessario a rispettare eventuali obblighi di legge (es. fiscali/contabili). Puoi chiedere in qualsiasi momento la cancellazione del tuo account, vedi la <a href="elimina-account.html">pagina dedicata</a>.</p>
+    </section>
+
+    <section id="s7">
+      <span class="num">7</span>
+      <h2>Diritti dell'interessato</h2>
+      <p>In qualsiasi momento puoi scrivere a <a href="mailto:tagliatacarovigno@gmail.com">tagliatacarovigno@gmail.com</a> per esercitare i tuoi diritti:</p>
+      <ul>
+        <li><strong>Accesso</strong> &mdash; sapere se i tuoi dati sono trattati e riceverne una copia;</li>
+        <li><strong>Rettifica</strong> &mdash; correggere dati inesatti o incompleti;</li>
+        <li><strong>Cancellazione</strong> &mdash; ottenere la rimozione dei tuoi dati quando non servono pi&ugrave; o il trattamento non &egrave; lecito, salvo obblighi di legge che ne impongano la conservazione. Vedi la <a href="elimina-account.html">pagina dedicata alla cancellazione dell&rsquo;account</a>;</li>
+        <li><strong>Limitazione</strong> &mdash; chiedere che il trattamento sia sospeso in casi specifici;</li>
+        <li><strong>Opposizione</strong> &mdash; opporti in qualsiasi momento al trattamento;</li>
+        <li><strong>Portabilit&agrave;</strong> &mdash; ricevere i tuoi dati in un formato strutturato e leggibile;</li>
+        <li><strong>Reclamo</strong> &mdash; rivolgerti al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it">www.garanteprivacy.it</a>) se ritieni che il trattamento violi il GDPR.</li>
+      </ul>
+    </section>
+
+    <section id="s8">
+      <span class="num">8</span>
+      <h2>Sicurezza</h2>
+      <p>L'accesso ai dati &egrave; protetto da autenticazione e da regole di sicurezza a livello di database (Row Level Security), che garantiscono che ogni cliente veda e gestisca solo i propri dati.</p>
+    </section>
+
+    <section id="s9">
+      <span class="num">9</span>
+      <h2>Modifiche a questa informativa</h2>
+      <p>Questa informativa pu&ograve; essere aggiornata; la data di &ldquo;Ultimo aggiornamento&rdquo; in cima riflette la versione corrente.</p>
+    </section>
+
+    <section id="s10">
+      <span class="num">10</span>
+      <h2>Contatti</h2>
+      <p>Per domande su questa informativa o per richieste sui tuoi dati: <a href="mailto:tagliatacarovigno@gmail.com">tagliatacarovigno@gmail.com</a>.</p>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <img src="logo.png" alt="" />
+    <span>La Tagliata SRLS &mdash; macelleria, Carovigno (BR)</span>
+  </div>
+  <span class="tagline"><a href="termini-uso.html">Termini d'Uso</a><a href="elimina-account.html">Cancellazione account</a></span>
+</footer>
+
+</body>
+</html>

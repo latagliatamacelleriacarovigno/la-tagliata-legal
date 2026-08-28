@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cancellazione account — La Tagliata</title>
+<link rel="icon" href="favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #323232;
+    --card: #393635;
+    --card-hover: #413e3c;
+    --ink: #efe9de;
+    --ink-soft: #c9c2b4;
+    --ink-muted: #9c968a;
+    --border: #54504d;
+    --accent: #a9642f;
+    --accent-soft: rgba(169, 100, 47, 0.18);
+    --accent-deep: #8f5025;
+    --warm: #d6432b;
+    --warm-soft: rgba(214, 67, 43, 0.16);
+    --warm-deep: #a3350f;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #fbf9f6;
+      --card: #ffffff;
+      --card-hover: #f2eee7;
+      --ink: #2a2724;
+      --ink-soft: #5c564e;
+      --ink-muted: #8a8377;
+      --border: rgba(42, 39, 36, 0.12);
+      --accent: #8f5025;
+      --accent-soft: rgba(143, 80, 37, 0.1);
+      --accent-deep: #6b3c1c;
+      --warm: #b23a1c;
+      --warm-soft: rgba(178, 58, 28, 0.1);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .display {
+    font-family: "Playfair Display", Georgia, serif;
+    text-wrap: balance;
+  }
+
+  /* ---------- nav ---------- */
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem clamp(1.25rem, 4vw, 3rem);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .brand img {
+    width: 28px;
+    height: 28px;
+    display: block;
+    border-radius: 7px;
+  }
+
+  .brand-name {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(3.5rem, 9vw, 6.5rem) 1.5rem clamp(3rem, 7vw, 5rem);
+    text-align: center;
+    isolation: isolate;
+  }
+
+  .hero::before,
+  .hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.3;
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+
+  .hero::before {
+    width: 34rem;
+    height: 34rem;
+    top: -14rem;
+    left: 50%;
+    transform: translateX(-70%);
+    background: radial-gradient(circle, var(--warm), transparent 70%);
+  }
+
+  .hero::after {
+    width: 30rem;
+    height: 30rem;
+    top: -8rem;
+    left: 50%;
+    transform: translateX(10%);
+    background: radial-gradient(circle, var(--accent), transparent 70%);
+    animation-delay: -11s;
+  }
+
+  @keyframes drift {
+    from { transform: translate(-70%, 0) scale(1); }
+    to { transform: translate(-58%, 3%) scale(1.08); }
+  }
+
+  .hero-logo {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 1.5rem;
+    display: block;
+    border-radius: 20px;
+    filter: drop-shadow(0 12px 28px rgba(143, 80, 37, 0.35));
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--warm), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.08;
+    margin: 0 0 1rem;
+    color: var(--ink);
+  }
+
+  .hero-sub {
+    max-width: 46ch;
+    margin: 0 auto;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+  }
+
+  /* ---------- layout ---------- */
+
+  .layout {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 2rem) 6rem;
+  }
+
+  .intro {
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 0 0 2.5rem;
+  }
+
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 0.85rem;
+  }
+
+  h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 0.85rem;
+    text-wrap: balance;
+  }
+
+  p { margin: 0 0 0.9rem; max-width: 64ch; }
+  p:last-child { margin-bottom: 0; }
+
+  ul { margin: 0 0 0.9rem; padding-left: 1.2rem; max-width: 62ch; }
+  li { margin-bottom: 0.5rem; }
+  li:last-child { margin-bottom: 0; }
+
+  strong { font-weight: 600; }
+
+  .contact-card {
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  }
+
+  .contact-card a {
+    font-weight: 700;
+  }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem clamp(1.25rem, 4vw, 3rem) 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+
+  .footer-brand img { width: 20px; height: 20px; border-radius: 5px; }
+
+  footer .tagline { color: var(--ink-muted); font-size: 0.82rem; }
+  footer .tagline a { margin-left: 0.75rem; }
+  footer .tagline a:first-child { margin-left: 0; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brand" href="index.html">
+    <img src="logo.png" alt="" />
+    <span class="brand-name">La Tagliata</span>
+  </a>
+  <span class="nav-tag">Documento legale</span>
+</nav>
+
+<header class="hero" id="top">
+  <img class="hero-logo" src="logo.png" alt="La Tagliata" />
+  <span class="eyebrow">La Tagliata &middot; macelleria e ordini online</span>
+  <h1 class="display">Cancellazione dell&rsquo;account</h1>
+  <p class="hero-sub">Come richiedere la cancellazione del tuo account La Tagliata e dei relativi dati.</p>
+</header>
+
+<div class="layout">
+  <p class="intro">Questa pagina si applica a chi ha un account cliente nell&rsquo;app La Tagliata (accesso con email e password, Google Sign-In o Sign in with Apple). Per il trattamento dei dati in generale, vedi l&rsquo;<a href="index.html">informativa sulla privacy</a>.</p>
+
+  <section>
+    <span class="num">1</span>
+    <h2>Come richiedere la cancellazione</h2>
+    <p>Scrivi a <a href="mailto:tagliatacarovigno@gmail.com">tagliatacarovigno@gmail.com</a> indicando l&rsquo;indirizzo email o il numero di telefono del tuo account, richiedendo la cancellazione.</p>
+  </section>
+
+  <section>
+    <span class="num">2</span>
+    <h2>Cosa viene cancellato</h2>
+    <p>La richiesta comporta la cancellazione dei tuoi <strong>dati di autenticazione</strong> (email, credenziali di accesso, identificativo Google/Apple se usato) e del tuo <strong>profilo</strong> (nome, numero di telefono).</p>
+  </section>
+
+  <section>
+    <span class="num">3</span>
+    <h2>Cosa viene conservato</h2>
+    <p>Lo storico dei tuoi ordini passati pu&ograve; essere conservato anche dopo la cancellazione dell&rsquo;account, per il tempo necessario a rispettare eventuali obblighi di legge (es. fiscali/contabili).</p>
+  </section>
+
+  <section>
+    <span class="num">4</span>
+    <h2>Tempistiche</h2>
+    <p>La richiesta viene evasa entro <strong>30 giorni</strong> dalla ricezione. Dopo la cancellazione non sar&agrave; pi&ugrave; possibile accedere all&rsquo;app con quell&rsquo;account.</p>
+  </section>
+
+  <section class="contact-card">
+    <span class="num">5</span>
+    <h2>Contatti</h2>
+    <p>Per qualsiasi domanda su questa procedura: <a href="mailto:tagliatacarovigno@gmail.com">tagliatacarovigno@gmail.com</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <img src="logo.png" alt="" />
+    <span>La Tagliata SRLS &mdash; macelleria, Carovigno (BR)</span>
+  </div>
+  <span class="tagline"><a href="index.html">Informativa sulla privacy</a><a href="termini-uso.html">Termini d'Uso</a></span>
+</footer>
+
+</body>
+</html>
